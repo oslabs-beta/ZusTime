@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/client/index.ts',
+  entry: './src/client/index.tsx',
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',
@@ -46,5 +46,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      react: path.resolve('./node_modules/react'),
+    },
   },
 };
