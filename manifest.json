@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+  
+    "name": "Zustand Dev Tools",
+    "version": "0.1",
+  
+    "description": "Developer Tool and Time Travel Debugger for Zustand",
+    "author": "Debuggen Team",
+  
+    "devtools_page": "/chrome-extension/html/devtools.html",
+
+    "background": {
+      "service_worker": "/chrome-extension/js/background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [ "<all_urls>" ],
+        "js": ["/chrome-extension/js/content-script.js"]
+      }
+    ],
+    "permissions": ["storage", "tabs", "activeTab", "scripting"]
+  }

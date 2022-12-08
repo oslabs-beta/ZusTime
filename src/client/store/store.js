@@ -2,9 +2,9 @@ import create from 'zustand';
 
 const useStore = create((set) => ({
   bgColor: {
-    r: 115,
-    g: 220,
-    b: 125,
+    r: 225,
+    g: 225,
+    b: 225,
   },
 
   previousStates: [],
