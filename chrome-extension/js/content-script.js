@@ -1,4 +1,3 @@
-document.body.style.backgroundColor = 'purple';
 console.log('hello this is coming from content-script.ts');
 
 //sending a message

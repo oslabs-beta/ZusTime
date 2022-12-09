@@ -2,9 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/client/index.tsx',
+  entry: './src/client/index.js',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '/chrome-extension/dist'),
     publicPath: '/',
     filename: 'dist.js',
   },
@@ -37,6 +37,18 @@ module.exports = {
         test: /\.tsx?/,
         exclude: /(node_modules)/,
         use: 'ts-loader',
+      },
+      {
+        test: /\.js$|jsx/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+            },
+          },
+        ],
       },
       {
         test: /.(css|scss)$/,
