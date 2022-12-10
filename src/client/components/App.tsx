@@ -3,6 +3,26 @@ import * as React from "react";
 
 import useStore from '../store/store';
 
+//mainPort will eventually return an object. Change 'any' to object type
+let mainPort: any;
+
+const connect = () => {
+  mainPort = chrome.runtime.connect();
+  mainPort.onMessage.addListener((message:any, sender:any, sendResponse:any) => {
+    //getting snapshots, real logic stuff. Not right now! We babies.
+    console.log(message);
+  })
+}
+
+const injectAndUpdateScript = () => {
+  mainPort.postMessage({
+    body: 'runContentScript'
+  });
+  //can add another message here to update the content script with the bundleResource
+}
+
+//these two functions above with be invoked either on mount or with a handle click function that 
+
 
 function App() {
   const bgColor = useStore((state) => state.bgColor);
