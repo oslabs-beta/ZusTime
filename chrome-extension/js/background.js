@@ -14,3 +14,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     sendResponse({ farewell: 'goodbye Kelsey' });
   }
 });
+
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  console.log('got the message from clicking button');
+  if(request.hey === 'sam') {
+    sendResponse({sup: 'you'});
+  }
+});
