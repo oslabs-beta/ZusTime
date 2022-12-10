@@ -8,19 +8,21 @@ const useStore = create((set) => ({
   },
 
   previousStates: [],
+  index: 0,
+
+  updateIndex: (newIndex) =>
+    set((state) => ({
+      index: newIndex,
+    })),
 
   addPreviousState: (currColor) =>
     set((state) => ({
       previousStates: [...state.previousStates, currColor],
     })),
 
-  newColor: (r, g, b) =>
+  newColor: (newBgColor) =>
     set((state) => ({
-      bgColor: {
-        r: r,
-        g: g,
-        b: b,
-      },
+      bgColor: newBgColor,
     })),
 }));
 
