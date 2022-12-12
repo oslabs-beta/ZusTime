@@ -1,0 +1,14 @@
+.jumpshots {
+    padding: 1rem;
+    width: auto;
+}
+
+h1 {
+    color: white;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.container {
+    display: flex;
+    gap: 3rem;
+}
