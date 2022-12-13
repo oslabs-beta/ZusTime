@@ -95,11 +95,9 @@ const Debugger = () => {
     document.body.style.backgroundColor = rgb;
     return (
         <div>
-            <h1>Time Travel Debugger</h1>
-            <h2>My background color is {`(${r}, ${g}, ${b})`}</h2>
             <div className='container'>
             <span>{states}</span>
-            <span className='visualizer'><StateVisualizer index={index - 1}/></span>
+            <span><StateVisualizer index={index - 1}/></span>
             </div>
         </div>
     )

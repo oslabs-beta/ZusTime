@@ -24,8 +24,9 @@ const Snapshot = ({color, index}: {color: any, index: number}) => {
     
     return (
         <div className="jumpshots">
-            <span className="state">{`r: ${color.r}, g: ${color.g}, b: ${color.b} `}</span>
-            <button onClick={jumpState}>{`jump to state ${index}`}</button>
+            <div className="state">{`r: ${color.r}, g: ${color.g}, b: ${color.b} `}</div>
+            <div><button onClick={jumpState}>{`jump to state ${index}`}</button></div>
+
         </div>
     )
 }

@@ -1,49 +1,49 @@
 const Snapshots = [
   {
     bgColor: {
-      r: 115,
-      g: 225,
-      b: 110,
+      r: 19,
+      g: 3,
+      b: 3,
     },
     index: 0,
   },
   {
     bgColor: {
-      r: 217,
-      g: 78,
-      b: 100,
+      r: 45,
+      g: 8,
+      b: 10,
     },
     index: 1,
   },
   {
     bgColor: {
-      r: 112,
-      g: 72,
-      b: 110,
+      r: 124,
+      g: 54,
+      b: 38,
     },
     index: 2,
   },
   {
     bgColor: {
-      r: 212,
-      g: 112,
-      b: 111,
+      r: 245,
+      g: 113,
+      b: 63,
     },
     index: 3,
   },
   {
     bgColor: {
-      r: 19,
-      g: 231,
-      b: 118,
+      r: 213,
+      g: 89,
+      b: 11,
     },
     index: 4,
   },
   {
     bgColor: {
-      r: 210,
-      g: 231,
-      b: 118,
+      r: 255,
+      g: 205,
+      b: 188,
     },
     index: 5,
   },
