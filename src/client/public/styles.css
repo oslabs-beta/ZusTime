@@ -1,0 +1,44 @@
+body {
+    color: rgb(255, 240, 240);
+    font-family: monospace;
+}
+
+
+.jumpshots {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: center;
+    padding: 1rem;
+    width: auto;
+    border: 2px solid white;
+    margin: 1rem;
+    border-radius: .5rem;
+    background-color: #2d080a9b;
+}
+
+h1 {
+    color: white;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.container {
+    display: flex;
+    gap: 3rem;
+}
+
+button {
+    font-size: .7rem;
+    border: 1px solid white;
+    padding: .5rem;
+    color:rgb(84, 84, 84);
+    border-radius: .5rem;
+}
+
+.stateVisualizer {
+    background-color: #82090f98;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 3px solid white;
+    line-height: 1.5rem;
+}
