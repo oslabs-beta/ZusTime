@@ -92,12 +92,12 @@ const Debugger = () => {
         return <Snapshot color={el.bgColor} index={el.index} />
     })
 
-    document.body.style.backgroundColor = rgb;
+    // document.body.style.backgroundColor = rgb;
     return (
         <div>
-            <div className='container'>
-            <span>{states}</span>
-            <span><StateVisualizer index={index - 1}/></span>
+            <div className='debugContainer'>
+            <div className="snapshotContainer">{states}</div>
+            <div className="stateVisualContainer"><StateVisualizer index={index - 1}/></div>
             </div>
         </div>
     )
