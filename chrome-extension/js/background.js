@@ -5,42 +5,52 @@ chrome.runtime.onInstalled.addListener(() => {
 //declare background port
 let backgroundPort;
 
+// functions to assist with messaging api
+
+// grabs the body from the dom and updates the color based on what is based in
+function change(color) {
+  document.querySelector('body').style.backgroundColor = color;
+}
+
 //listens for messages from content script and can then send messages to app.jsx
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request) {
     if (backgroundPort) {
-      backgroundPort.postMessage({ body: request.body })
-      console.log('message with food was received in background.js')
+      backgroundPort.postMessage({ body: request.body });
     }
   }
 });
 
-//listens for messages from app.js (main port) and can then send new messages or commands to content script
 chrome.runtime.onConnect.addListener((port) => {
-  backgroundPort = port;
-  backgroundPort.onMessage.addListener((message) => {
-    //listening for inital run content script message from app
-    if (message.body === 'runContentScript') {
-      console.log('runContentScript in background')
-      chrome.tabs.executeScript({file: './content-script.js'})
-    };
-    if (message.body === "what's for dinner") {
-      console.log('dinner in background')
-      chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, {
-          body: "what's for dinner",
-        })
-      })
-    };
-    if (message.body === 'updateScript') {
-      setTimeout(() => {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-          chrome.tabs.sendMessage(tabs[0].id, {
-            body: 'update',
-            script: message.script
-          });
+  //declaring background port
+  //adding a listener to our port
+  //this listens for messages from app.tsx and has the ability to send messages to content script
+  let backgroundPort = port;
+
+  backgroundPort.onMessage.addListener((message, sender, sendResponse) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      //injects content script into current users tab
+      if (message.body === 'runContentScript') {
+        console.log('runContentScript in background');
+        chrome.scripting.executeScript({
+          target: { tabId: tabs[0].id, allFrames: true },
+          file: ['./content-script.js'],
         });
-      }, 50)
-    }
+      }
+
+      //injects a script of the previous state that currently updates the backgrounds color
+      if (message.body === 'injectScript') {
+        chrome.scripting.executeScript({
+          target: { tabId: tabs[0].id, allFrames: true },
+          func: change,
+          args: [message.previousState],
+        });
+      }
+
+      //just a test that will show in the console if content script is connected and working
+      chrome.tabs.sendMessage(tabs[0].id, {
+        body: 'Communication line from BG to CS working!',
+      });
+    });
   });
 });
