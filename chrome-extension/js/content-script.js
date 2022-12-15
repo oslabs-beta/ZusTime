@@ -5,8 +5,10 @@ chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
 });
 
 // things we can go back to
-
 //content script listening for message from the injected script/window
 // window.addEventListener('message', (event) => {
 //   chrome.runtime.sendMessage(event.data)
 // });
+
+
+
