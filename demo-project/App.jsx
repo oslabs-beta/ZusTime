@@ -21,7 +21,9 @@ const App = () => {
   return (
     <div className="newColor">
       <div>bored?</div>
-      <button onClick={handleClickMe}>click me</button>
+      <button id="clickMeButton" onClick={handleClickMe}>
+        click me
+      </button>
     </div>
   );
 };

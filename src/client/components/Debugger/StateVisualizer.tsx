@@ -10,7 +10,7 @@ const StateVisualizer = ({index}: {index: number}) => {
     }
     return (
         <div>
-            <h3 className="stateVisualizer">Previous States: {allStates}</h3>
+            <div className="stateVisualizer">Previous States: {allStates}</div>
         </div>
     )
 }

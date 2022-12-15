@@ -18,5 +18,7 @@
         "js": ["/js/content-script.js"]
       }
     ],
-    "permissions": ["storage", "tabs", "activeTab", "scripting"]
+    "permissions": ["storage", "tabs", "activeTab", "scripting"],
+    "host_permissions": ["<all_urls>"]
+
   }
