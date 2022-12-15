@@ -14,8 +14,8 @@ function change(color) {
 
 //listens for messages from content script and can then send messages to app.jsx
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (backgroundPort) {
-      backgroundPort.postMessage({ body: request.body });
+  if (backgroundPort) {
+    backgroundPort.postMessage({ body: request.body });
   }
 });
 
@@ -31,8 +31,8 @@ chrome.runtime.onConnect.addListener((port) => {
       if (message.body === 'runContentScript') {
         console.log('runContentScript in background');
         chrome.scripting.executeScript({
-          target: { tabId: tabs[0].id, allFrames: true },
-          file: ['./content-script.js'],
+          target: { tabId: tabs[0].id },
+          file: ['./js/content-script.js'],
         });
       }
 

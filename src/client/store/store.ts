@@ -13,8 +13,8 @@ interface storeType {
 }
 
 const useStore = create<storeType>()((set:any) => ({
-  previousStates: [...Snapshots],
-  index: Snapshots.length,
+  previousStates: [],
+  index: 0,
   
   bgColor: {
     r: Snapshots[Snapshots.length - 1].bgColor.r,
