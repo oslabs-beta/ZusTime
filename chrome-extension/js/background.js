@@ -14,10 +14,8 @@ function change(color) {
 
 //listens for messages from content script and can then send messages to app.jsx
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request) {
     if (backgroundPort) {
       backgroundPort.postMessage({ body: request.body });
-    }
   }
 });
 
@@ -25,7 +23,7 @@ chrome.runtime.onConnect.addListener((port) => {
   //declaring background port
   //adding a listener to our port
   //this listens for messages from app.tsx and has the ability to send messages to content script
-  let backgroundPort = port;
+  backgroundPort = port;
 
   backgroundPort.onMessage.addListener((message, sender, sendResponse) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -44,6 +42,12 @@ chrome.runtime.onConnect.addListener((port) => {
           target: { tabId: tabs[0].id, allFrames: true },
           func: change,
           args: [message.previousState],
+        });
+      }
+
+      if (message.body === 'GETCOLOR') {
+        chrome.tabs.sendMessage(tabs[0].id, {
+          body: 'GETCOLOR',
         });
       }
 
