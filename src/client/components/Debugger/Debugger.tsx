@@ -12,14 +12,12 @@ import data from './FakeData'
 
 const Debugger = ({injectScript}) => {
     // grabbing parts of the store
-    const bgColor = useStore((state) => state.bgColor);
     const index = useStore((state) => state.index);
-      
-      const { r, g, b } = bgColor;
-      const rgb = `rgb(${r}, ${g}, ${b})`;
+     const previousStates = useStore((state) => state.previousStates);
+    
   
-    const states = data.map(el => {
-        return <Snapshot color={el.bgColor} index={el.index} injectScript={injectScript} />
+    const states = previousStates.map((el, index) => {
+        return <Snapshot color={el.bgColor} index={index} injectScript={injectScript} />
     })
 
     return (
