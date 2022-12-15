@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+* {
+    text-transform: uppercase;
+}
+
 body {
-    color: rgb(255, 240, 240);
+    background-color: #354F52;
+    color: #CAD2C5;
     font-family: monospace;
 }
 
@@ -10,35 +17,53 @@ body {
     gap: 2rem;
     align-items: center;
     padding: 1rem;
-    width: auto;
     border: 2px solid white;
     margin: 1rem;
     border-radius: .5rem;
-    background-color: #2d080a9b;
+    background-color: #2F3E46
 }
 
 h1 {
-    color: white;
-    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    font-family: Chivo Mono;
+    color: #eaf4eb;
+    text-shadow: 1px 1px 2px rgb(255, 255, 255);
+    align-self: center;
 }
 
-.container {
+.debugContainer {
     display: flex;
     gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
 }
 
 button {
-    font-size: .7rem;
+    font-size: .6rem;
     border: 1px solid white;
     padding: .5rem;
-    color:rgb(84, 84, 84);
+    color: #2F3E46;
     border-radius: .5rem;
+    background-color: #eaf4eb;
 }
 
 .stateVisualizer {
-    background-color: #82090f98;
+    background-color: #52796F;
     padding: 2rem;
     border-radius: 1rem;
-    border: 3px solid white;
+    border: 3px solid #2F3E46;
     line-height: 1.5rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.snapshotContainer {
+    background-color: #CAD2C5;
+}
+
+.stateVisualContainer {
+
 }

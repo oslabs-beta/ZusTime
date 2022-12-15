@@ -6,7 +6,8 @@ import useStore from '../store/store';
 import Debugger from './Debugger/Debugger';
 
 
-function App() {  //mainPort will eventually return an object. Change 'any' to object type
+function App() { 
+  //mainPort will eventually return an object. Change 'any' to object type
   //declaring our main port 
  let mainPort: any;
 
@@ -15,61 +16,40 @@ function App() {  //mainPort will eventually return an object. Change 'any' to o
    mainPort = chrome.runtime.connect();
    //listening for messages from background.js
    mainPort.onMessage.addListener((message, sender, sendResponse) => {
-     //getting snapshots, real logic stuff. Not right now! We babies.
-     console.log('message sent back from bg to app')
-     console.log(message);
-     if (message.body.food) {
-       console.log(message.body.food)
-       alert(message.body.food)
+     if (message) {
+       console.log(message.body)
      }
    })
  }
 
- const injectAndUpdateScript = () => {
+//this function runs when the dev tool is opened and injects the content script into the current users tab
+ const injectContentScript = () => {
+  mainPort.postMessage({
+    body: 'runContentScript'
+  })
+ }
+
+ //this function takes the previous state from the store and injects it inot the current users tab, changing the color of the background
+ const injectScript = (previousState) => {
    //these messages are being sent to background.js
    mainPort.postMessage({
-     body: 'runContentScript'
+     body: 'injectScript',
+     previousState: previousState
    });
-   mainPort.postMessage({
-     body: "what's for dinner"
-   });
-
-
-   chrome.devtools.inspectedWindow.getResources((resources) => {
-     for (let i = 0; i < resources.length; i++) {
-       // if (resources[i].type === 'script') {
-       if (resources[i].url.endsWith('bundle.js')) {
-         resources[i].getContent((content, encoding) => {
-           mainPort.postMessage({
-             body: 'updateScript',
-             script: content
-           });
-         });
-         break;
-       };
-     };
-   });
-
  }
 
-
-
- //handle click to handle the CONNECT BUTTON click and invoke the two functions above
- const handleClick = () => {
-   alert('connect button clicked');
-   connect();
-   injectAndUpdateScript();
- }
+// on mount of the application, run the connection and run function that will send a message to background.js to inject content script
+ useEffect(() => {
+  connect()
+  injectContentScript()
+}, [])
  
     return (
       <div>
-        <div><Debugger/></div>
-        <div><button id="connect" onClick={handleClick}>Connect!</button></div>
+        <div><Debugger injectScript={injectScript}/></div>
       </div>
     )
 
 }
 
 export default App;
-
-//why didn't useEffect work?
