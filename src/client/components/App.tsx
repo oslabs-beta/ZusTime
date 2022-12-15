@@ -16,9 +16,8 @@ function App() {
    mainPort = chrome.runtime.connect();
    //listening for messages from background.js
    mainPort.onMessage.addListener((message, sender, sendResponse) => {
-     if (message) {
-       console.log(message.body)
-     }
+       console.log(message.body.color);
+       alert(message.body.color);
    })
  }
 
@@ -38,6 +37,12 @@ function App() {
    });
  }
 
+ const getColor = () => {
+  mainPort.postMessage({
+    body: 'GETCOLOR',
+  });
+ }
+
 // on mount of the application, run the connection and run function that will send a message to background.js to inject content script
  useEffect(() => {
   connect()
@@ -47,6 +52,7 @@ function App() {
     return (
       <div>
         <div><Debugger injectScript={injectScript}/></div>
+        <button onClick={getColor}>Get Color</button>
       </div>
     )
 
