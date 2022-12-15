@@ -24,19 +24,21 @@ body {
 }
 
 h1 {
+    display: flex;
+    align-content: center;
+    justify-content: center;
     font-family: Chivo Mono;
     color: #eaf4eb;
     text-shadow: 1px 1px 2px rgb(255, 255, 255);
-    align-self: center;
 }
 
 .debugContainer {
     display: flex;
     gap: 3rem;
     justify-content: center;
-    align-items: center;
     width: auto;
     height: auto;
+
 }
 
 button {
@@ -62,8 +64,6 @@ button:hover {
 
 .snapshotContainer {
     background-color: #CAD2C5;
-}
-
-.stateVisualContainer {
-
+    height: 30rem;
+    overflow: scroll;
 }
