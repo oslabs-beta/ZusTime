@@ -2,6 +2,8 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import './styles.css';
 import useStore from './store';
+import Sibling1 from './Sibling1.jsx';
+import Sibling2 from './Sibling2.jsx';
 
 const App = () => {
   const bgColor = useStore((state) => state.bgColor);
@@ -24,6 +26,8 @@ const App = () => {
       <button id="clickMeButton" onClick={handleClickMe}>
         click me
       </button>
+      <Sibling1 color={rgb} newcolor={newColor}></Sibling1>
+      <Sibling2 color={rgb} index={index}></Sibling2>
     </div>
   );
 };
