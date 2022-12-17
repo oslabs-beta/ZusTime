@@ -22,6 +22,7 @@ function App() {
    mainPort = chrome.runtime.connect();
    //listening for messages from background.js
    mainPort.onMessage.addListener((message, sender, sendResponse) => {
+     alert(message.body)
        addPreviousState({
         bgColor:{
           rgb: message.body.color
