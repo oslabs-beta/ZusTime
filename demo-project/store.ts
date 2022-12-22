@@ -12,6 +12,7 @@ const useStore = create<storeType>()((set:any) => ({
     }))
 }));
 
+//this makes the store available to be accessed by a chrome developer tool
 (window as any).store = useStore;
 
 export default useStore;

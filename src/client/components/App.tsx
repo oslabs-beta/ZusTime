@@ -16,30 +16,41 @@ function App() {
 
   //declaring our main port 
   let mainPort: any;
-
+  let connected = false;
 
   const connect = () => {
     //connects devtool to inspected page
-    mainPort = chrome.runtime.connect();
+    if (!connected) {
+      mainPort = chrome.runtime.connect();
+      connected = true;
+      console.log('port connected!');
+    } else {
+      console.log('port is already connected');
+    }
 
-    //listening for messages from background.js
-    mainPort.onMessage.addListener((message, sender, sendResponse) => {
+    if (connected) {
+      //listening for messages from background.js
+      mainPort.onMessage.addListener((message, sender, sendResponse) => {
 
-      //if tree is sent from the injected script
-      if (message.body.tree) {
-        updateTreeComponents(message.body.tree);
-      }
-
-      //if state snapshot is sent from injected script it is then grabbed and added to our store inside the previous states array
-      if (message.body === 'stateSnapshot') {
-        console.log('snapshot received', message.snapshot)
-        //compare incoming snapshot to snapshots already in array
-        if (!previousStates.includes(message.snapshot)) {
-          addPreviousState(message.snapshot);
+        //if tree is sent from the injected script
+        if (message.body.tree) {
+          updateTreeComponents(message.body.tree);
         }
-      }
-    });
+
+        //if state snapshot is sent from injected script it is then grabbed and added to our store inside the previous states array
+        if (message.body === 'stateSnapshot') {
+          if (!previousStates.includes(message.snapshot)) {
+            addPreviousState(message.snapshot);
+            console.log('snapshot object added to array');
+          }
+        }
+      });
+    }
   }
+
+
+
+
 
   //this function runs when the dev tool is opened and injects the content script into the current users tab
   const injectContentScript = () => {
@@ -71,7 +82,8 @@ function App() {
   useEffect(() => {
     injectContentScript();
   }, [])
- 
+
+
 
   return (
     <div>

@@ -11,10 +11,16 @@ const Debugger = ({injectScript}) => {
     const index = useStore((state) => state.index);
     const previousStates = useStore((state) => state.previousStates);
     
-  
-    const states = previousStates.map((el, index) => {
-        return <Snapshot index={index} injectScript={injectScript} />
-    })
+    console.log('previous states in debugger.tsx', previousStates);
+
+    const states = [];
+    for (let i = 0; i < previousStates.length; i += 2) {
+        states.push(<Snapshot index={i} injectScript={injectScript} />)
+    }
+
+    // const states = previousStates.map((el, index) => {
+    //     return <Snapshot index={index} injectScript={injectScript} />
+    // })
 
     return (
         <div>

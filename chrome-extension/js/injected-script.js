@@ -1,3 +1,4 @@
+
 console.log('hello im inside of injected scripts');
 
 //this grabs the user's application's store
