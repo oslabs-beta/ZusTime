@@ -20,13 +20,16 @@
   },
   "homepage": "https://github.com/oslabs-beta/Zustand-DevTools#readme",
   "dependencies": {
+    "@jxdev/react-dom-inspector": "^1.3.0",
     "chrome-types": "^0.1.153",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "nodemon": "^2.0.20",
+    "raw-loader": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-inspector": "^6.0.1",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1",
     "zustand": "^4.1.5"

@@ -1,3 +1,5 @@
+// const { update } = require("lodash");
+
 chrome.runtime.onInstalled.addListener(() => {
   console.log('hello Zustand');
 });
@@ -5,18 +7,11 @@ chrome.runtime.onInstalled.addListener(() => {
 //declare background port
 let backgroundPort;
 
-// functions to assist with messaging api
-
-// grabs the body from the dom and updates the color based on what is based in
-function change(color) {
-  document.querySelector('body').style.backgroundColor = color;
-}
-
 //listens for messages from content script and can then send messages to app.jsx
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (backgroundPort) {
-    // backgroundPort.postMessage({ body: request.body });
-    console.log(request.body);
+    backgroundPort.postMessage({ body: request.body, snapshot: request.snapshot });
+    console.log(request.snapshot);
   }
 });
 
@@ -27,6 +22,7 @@ chrome.runtime.onConnect.addListener((port) => {
   backgroundPort = port;
 
   backgroundPort.onMessage.addListener((message, sender, sendResponse) => {
+
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       //injects content script into current users tab
       if (message.body === 'runContentScript') {
@@ -35,27 +31,17 @@ chrome.runtime.onConnect.addListener((port) => {
           target: { tabId: tabs[0].id },
           files: ['./js/content-script.js'],
         });
+
       }
 
-      //injects a script of the previous state that currently updates the backgrounds color
-      if (message.body === 'injectScript') {
-        chrome.scripting.executeScript({
-          target: { tabId: tabs[0].id, allFrames: true },
-          func: change,
-          args: [message.previousState],
-        });
-      }
-
-      if (message.body === 'GETCOLOR') {
+      //sends a message to the previously injected script containing the previous state that the user's store should be udpated to
+      if (message.body === 'TIMETRAVEL') {
+        //send message to content script
         chrome.tabs.sendMessage(tabs[0].id, {
-          body: 'GETCOLOR',
+          body: 'TIMETRAVEL',
+          previousState: message.previousState
         });
       }
-
-      //just a test that will show in the console if content script is connected and working
-      chrome.tabs.sendMessage(tabs[0].id, {
-        body: 'Communication line from BG to CS working!',
-      });
     });
   });
 });

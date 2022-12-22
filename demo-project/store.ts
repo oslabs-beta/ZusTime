@@ -1,47 +1,17 @@
-import create, {State} from 'zustand';
-import data from './fakedata'
-
-      const generateRandomColor = () => {
-        return Math.floor(Math.random() * 255);
-      };
-
+import create from 'zustand';
 interface storeType {
-  bgColor: any,
-  previousStates: any[],
-  index: number,
-  updateIndex: (index: number) => void,
-  addPreviousState: (currColor: any) => void,
-  newColor: (newBgColor?: any) => void
+  counter: number,
+  incrementCounter: () => void;
 }
 
 const useStore = create<storeType>()((set:any) => ({
-  previousStates: [...data],
-  index: data.length,
-  
-  bgColor: {
-    r: data[data.length - 1].bgColor.r,
-    g: data[data.length - 1].bgColor.g,
-    b: data[data.length - 1].bgColor.b,
-  },
-
-  updateIndex: (newIndex: number) =>
-    set((state:any) => ({
-      index: newIndex,
-    })),
-
-  addPreviousState: (currColor) =>
+  counter: 0,
+  incrementCounter: () =>
     set((state: any) => ({
-      previousStates: [...state.previousStates, currColor],
-    })),
-
-  newColor: (newBgColor?) =>
-    set((state: any) => ({
-      bgColor: {
-        r: generateRandomColor(),
-        g: generateRandomColor(),
-        b: generateRandomColor()
-      },
-    })),
+      counter: state.counter + 1
+    }))
 }));
+
+(window as any).store = useStore;
 
 export default useStore;

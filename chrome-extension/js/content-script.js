@@ -1,19 +1,18 @@
-// content script listening for message from the injected script/window
+
+
+// content script listening for message from the injected script/window and sends message to background
 window.addEventListener('message', (event) => {
   chrome.runtime.sendMessage(event.data);
 });
 
-//add a listener for messages from background
+//add a listener for messages from background.. can send message to injected script?
 chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
   //this log is a test from background that makes sure content script is connected and working
-  // console.log(req.body);
-  // console.log(document.querySelector('#clickMeButton'));
-  // if (req.body === 'GETCOLOR') {
-  //   alert(document.querySelector('body').style.backgroundColor);
-  //   window.postMessage({
-  //     body: { color: document.querySelector('body').style.backgroundColor },
-  //   });
-  // }
+  // console.log('message received from background in content script', req.body);
+  if (req.body === 'TIMETRAVEL') {
+    window.postMessage({body: 'TIMETRAVEL', previousState: req.previousState});
+    console.log('message received from background in content script', req.body);
+  }
 });
 
 // const clickMeButton = document.querySelector('#clickMeButton');
@@ -41,6 +40,10 @@ function injectScript(file, node) {
 <script type='text/javascript' src="/fiberTreeAnalyzer.js">
 */
 
-setTimeout(() => {
-  injectScript('./js/injected-script.js', 'body');
-}, 1000);
+// setTimeout(() => {
+//   injectScript('./js/injected-script.js', 'body');
+// }, 1000);
+
+injectScript('./js/injected-script.js', 'body');
+
+

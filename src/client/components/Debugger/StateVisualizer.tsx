@@ -7,7 +7,7 @@ const StateVisualizer = ({index}: {index: number}) => {
     
     let allStates = []
     for (let i = 0; i <= index; i++) {
-        allStates.push(<div>{previousStates[i].bgColor.rgb}</div>)
+        allStates.push(<div>{previousStates[i]}</div>)
     }
     return (
         <div>
