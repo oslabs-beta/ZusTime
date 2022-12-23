@@ -1,30 +1,29 @@
 import * as _ from 'lodash';
 import * as React from "react";
-import { useEffect } from 'react';
 import '../../public/styles.css'
 
 import useStore from '../../store/store';
 import Snapshot from './Snapshot';
 import StateVisualizer from './StateVisualizer'
 
-import data from './FakeData'
-
-
 const Debugger = ({injectScript}) => {
     // grabbing parts of the store
     const index = useStore((state) => state.index);
-     const previousStates = useStore((state) => state.previousStates);
+    const previousStates = useStore((state) => state.previousStates);
     
-  
-    const states = previousStates.map((el, index) => {
-        return <Snapshot color={el.bgColor} index={index} injectScript={injectScript} />
-    })
+
+    // declare array to hold states to render
+    const states = [];
+    // loop through previous states to produce a snapshot of every state in snapshots array
+    for (let i = 0; i < previousStates.length; i += 2) {
+        states.push(<Snapshot index={i} injectScript={injectScript} />)
+    }
 
     return (
         <div>
             <div className='debugContainer'>
             <div className="snapshotContainer">{states}</div>
-            <div className="stateVisualContainer"><StateVisualizer index={index - 1}/></div>
+            <div className="stateVisualContainer"><StateVisualizer /></div>
             </div>
         </div>
     )
