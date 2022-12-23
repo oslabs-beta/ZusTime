@@ -4,22 +4,20 @@ import Snapshots from '../components/Debugger/FakeData'
 
 
 interface storeType {
-  bgColor: any,
   previousStates: any[],
   index: number,
+  treeComponents: any,
   updateIndex: (index: number) => void,
   addPreviousState: (currColor: any) => void,
-  newColor: (newBgColor: any) => void
+  updateTreeComponents: (treeComponents: any) => void,
 }
 
 const useStore = create<storeType>()((set:any) => ({
   previousStates: [],
   index: 0,
-  
-  bgColor: {
-    r: Snapshots[Snapshots.length - 1].bgColor.r,
-    g: Snapshots[Snapshots.length - 1].bgColor.g,
-    b: Snapshots[Snapshots.length - 1].bgColor.b,
+  treeComponents: {
+    appName: '',
+    children: []
   },
 
   updateIndex: (newIndex: number) =>
@@ -27,15 +25,18 @@ const useStore = create<storeType>()((set:any) => ({
       index: newIndex,
     })),
 
-  addPreviousState: (currColor) =>
+  addPreviousState: (snapshot) =>
     set((state: any) => ({
-      previousStates: [...state.previousStates, currColor],
+      previousStates: [...state.previousStates, snapshot],
     })),
 
-  newColor: (newBgColor) =>
-    set((state: any) => ({
-      bgColor: newBgColor,
-    })),
+  updateTreeComponents: (treeObject) => 
+  set((state: any) => ({
+    treeComponents: {
+      appName: treeObject.app,
+      children: treeObject.children
+    }
+  }))
 }));
 
 export default useStore;
