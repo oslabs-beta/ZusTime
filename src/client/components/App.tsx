@@ -4,11 +4,11 @@ import { useEffect } from 'react';
 import useStore from '../store/store';
 import Debugger from './Debugger/Debugger';
 import Tree from './Tree/Tree';
-
-
+import NavBar from './NavBar/NavBar'
 
 
 function App() {
+
 
   const addPreviousState = useStore((state) => state.addPreviousState);
   const updateTreeComponents = useStore((state) => state.updateTreeComponents);
@@ -40,17 +40,12 @@ function App() {
         //if state snapshot is sent from injected script it is then grabbed and added to our store inside the previous states array
         if (message.body === 'stateSnapshot') {
           if (!previousStates.includes(message.snapshot)) {
-            addPreviousState(message.snapshot);
-            console.log('snapshot object added to array');
+              addPreviousState(message.snapshot);
           }
         }
       });
     }
   }
-
-
-
-
 
   //this function runs when the dev tool is opened and injects the content script into the current users tab
   const injectContentScript = () => {
@@ -61,7 +56,6 @@ function App() {
 
   //this function takes the previous state from the store and injects it into the current users tab. It is run whenver a jump to previous state button is clicked
   const injectScript = (previousState) => {
-    console.log(mainPort)
     //these messages are being sent to background.js
     mainPort.postMessage({
       body: 'TIMETRAVEL',
@@ -70,11 +64,6 @@ function App() {
   }
 
   // on mount of the application, run the connection and run function that will send a message to background.js to inject content script
-  // useEffect(() => {
-  //   connect()
-  //   injectContentScript()
-  // }, [])
-
   useEffect(() => {
     connect()
   });
@@ -84,14 +73,15 @@ function App() {
   }, [])
 
 
-
   return (
-    <div>
-      <div><Debugger injectScript={injectScript} /></div>
-      <div><Tree /></div>
-    </div>
+    <main>
+      <div><NavBar /></div>
+      <div id="debugger"><Debugger injectScript={injectScript} /></div>
+      <div id="tree" className="hidden" ><Tree /></div>
+    </main>
   )
 
 }
+
 
 export default App;

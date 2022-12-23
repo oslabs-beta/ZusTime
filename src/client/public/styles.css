@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
 * {
-    text-transform: uppercase;
 }
 
 body {
@@ -66,4 +65,8 @@ button:hover {
     background-color: #CAD2C5;
     height: 30rem;
     overflow: scroll;
+}
+
+.hidden {
+    display: none;
 }

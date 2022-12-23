@@ -10,6 +10,9 @@ const Snapshot = ({index, injectScript}: {index: number, injectScript:any}) => {
     const previousStates = useStore((state) => state.previousStates);
 
 
+    // handles click for when a snapshot is chosen
+    // inject script with the snapshot
+    // update index to indicate which snapshot we're on
     const handleClick = (e:any) => {
         injectScript(previousStates[index])
         updateIndex(index)
@@ -18,7 +21,7 @@ const Snapshot = ({index, injectScript}: {index: number, injectScript:any}) => {
     return (
         <div className="jumpshots">
             <div className="state">{previousStates[index]}</div>
-            <div><button onClick={handleClick}>{`jump to state ${index}`}</button></div>
+            <div><button onClick={handleClick}>{`Jump to state`}</button></div>
 
         </div>
     )

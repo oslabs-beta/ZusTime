@@ -1,6 +1,4 @@
 
-console.log('hello im inside of injected scripts');
-
 //this grabs the user's application's store
 const store = window.store;
 
@@ -8,10 +6,8 @@ const store = window.store;
 store.subscribe(() => {
   //grabs a snapshot of state
   const snapshot = store.getState();
-  
   //make the snapshot a string, otherwise it cannot be sent in a message
   const stringSnapshot = JSON.stringify(snapshot);
-
   //send message
   window.postMessage(
    { body: 'stateSnapshot', snapshot: stringSnapshot }
@@ -23,7 +19,6 @@ window.addEventListener('message', (event) => {
   if (event.data.body === 'TIMETRAVEL') {
     //we must parse the previous state from a string back into an object
     const parsedPreviousState = JSON.parse(event.data.previousState);
-
     //this sets the user's store back to its previous state
     store.setState(parsedPreviousState);
   }

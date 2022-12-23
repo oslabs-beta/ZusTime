@@ -1,9 +1,3 @@
-// const { update } = require("lodash");
-
-chrome.runtime.onInstalled.addListener(() => {
-  console.log('hello Zustand');
-});
-
 //declare background port
 let backgroundPort;
 
@@ -11,7 +5,6 @@ let backgroundPort;
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (backgroundPort) {
     backgroundPort.postMessage({ body: request.body, snapshot: request.snapshot });
-    console.log(request.snapshot);
   }
 });
 
@@ -26,7 +19,6 @@ chrome.runtime.onConnect.addListener((port) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       //injects content script into current users tab
       if (message.body === 'runContentScript') {
-        console.log('runContentScript in background');
         chrome.scripting.executeScript({
           target: { tabId: tabs[0].id },
           files: ['./js/content-script.js'],
