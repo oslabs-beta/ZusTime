@@ -22,7 +22,9 @@ const Debugger = ({injectScript}) => {
     return (
         <div>
             <div className='debugContainer'>
-            <div className="snapshotContainer">{states}</div>
+            <div className="snapshotContainer">
+                <h2>Time Travel Debugger</h2>
+                <div>{states}</div></div>
             <div className="stateVisualContainer"><StateVisualizer /></div>
             </div>
         </div>

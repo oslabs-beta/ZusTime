@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
 * {
+    margin: 0rem;
+    padding: 0rem;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #354F52;
-    color: #CAD2C5;
+    background-color: #2B2D42;
+    color: #8d99ae;
     font-family: monospace;
 }
 
@@ -19,25 +22,35 @@ body {
     border: 2px solid white;
     margin: 1rem;
     border-radius: .5rem;
-    background-color: #2F3E46
+    background-color: #8d99ae;
+    color:#f4a261
 }
 
 h1 {
+    padding-top: 1rem;
     display: flex;
     align-content: center;
     justify-content: center;
-    font-family: Chivo Mono;
-    color: #eaf4eb;
-    text-shadow: 1px 1px 2px rgb(255, 255, 255);
+    font-family: sans-serif;
+    color: #cb986f;
+    background-color: #f3ec78;
+    background-image: linear-gradient(45deg, #f3ec78, #af4261);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    letter-spacing: 0.5rem;
+    font-size: 1rem; 
+    font-weight: bold;
 }
 
 .debugContainer {
     display: flex;
-    gap: 3rem;
     justify-content: center;
-    width: auto;
-    height: auto;
-
+    width: 100vw;
+    height: 100vh;
+    border-top: 1px solid #f4a261;
 }
 
 button {
@@ -46,15 +59,20 @@ button {
     padding: .5rem;
     color: #2F3E46;
     border-radius: .5rem;
-    background-color: #eaf4eb;
+    background-color: #f2e8cf;
 }
 
 .stateVisualizer {
-    background-color: #52796F;
-    padding: 2rem;
-    border-radius: 1rem;
-    border: 3px solid #2F3E46;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #f2e8cf;
     line-height: 1.5rem;
+    color: #2b2d42;
+    flex: 1;
+    height: 100vh;
+    border-left: 1px solid #f4a261;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 button:hover {
@@ -62,9 +80,11 @@ button:hover {
 }
 
 .snapshotContainer {
-    background-color: #CAD2C5;
-    height: 30rem;
+    background-color: #2B2D42;
     overflow: scroll;
+    flex: 2;
+    height: 100vh;
+    border-right: 1px solid #f4a261;
 }
 
 .hidden {
@@ -73,10 +93,25 @@ button:hover {
 
 .navBarContainer {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: flex-start;
 }
 
 .logo {
     background-image: url('./images/plant.png')
+}
+
+.navBarContainer button{
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    border-bottom-left-radius: .1rem;
+    border-bottom-right-radius: .1rem;
+    margin: .2rem;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: .2rem;
 }

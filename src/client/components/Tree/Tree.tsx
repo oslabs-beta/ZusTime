@@ -20,7 +20,7 @@ const Tree = () => {
 
   return (
     <div>
-      <h1>Component Tree Visualizer</h1>
+      <h2>Component Tree Visualizer</h2>
       {tree}
     </div>
 
