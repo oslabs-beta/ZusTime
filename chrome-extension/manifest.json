@@ -1,11 +1,17 @@
 {
     "manifest_version": 3,
   
-    "name": "Zustand Dev Tools",
-    "version": "0.1",
+    "name": "ZusTime",
+    "version": "1.0",
   
-    "description": "Developer Tool and Time Travel Debugger for Zustand",
-    "author": "Debuggen Team",
+    "description": "Zustand's Time Travel Debugger & Component Hierarchy Visualizer",
+    "author": "ZusTime Debuggen Team",
+    "icons": {
+      "16": "assets/zustime.png",
+      "32": "assets/zustime.png",
+      "48": "assets/zustime.png",
+      "128": "assets/zustime.png"
+    },
   
     "devtools_page": "/html/devtools.html",
 
@@ -19,7 +25,7 @@
       }
     ],
     "web_accessible_resources": [{
-      "resources": ["/js/content-script.js", "/js/injected-script.js"],
+      "resources": ["/js/content-script.js", "/js/injected-script.js", "/assets/zustime.png", "styles.css"],
       "matches": ["<all_urls>"]
     }],
     "permissions": ["storage", "tabs", "activeTab", "scripting"],

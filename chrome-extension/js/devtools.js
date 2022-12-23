@@ -1,5 +1,5 @@
 chrome.devtools.panels.create(
-  'Zustand DevTool',
+  'ZusTime',
   null,
   // '/html/panel.html',
   '/html/panel.html',
