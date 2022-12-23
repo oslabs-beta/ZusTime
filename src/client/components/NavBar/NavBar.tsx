@@ -1,4 +1,5 @@
 import * as React from "react";
+// import logo from '../../public/images/ZusTime.PNG'
 
 function NavBar() {
 
@@ -18,14 +19,14 @@ function NavBar() {
     } 
 
     return (
-        <nav>
-            <div>            
+        <nav className="navBarContainer">
+            <div >            
             <button onClick={timeTravelClick}>Time Travel</button>
             <button onClick={componentTreeClick}>Component Tree</button>
             </div>
             <div>
               <div>ZusTime</div>
-            <img src='../public/images/ZusTime.png' alt="ZusTime Logo"></img></div>
+              <div className="logo"></div></div>
         </nav>
     )
 }

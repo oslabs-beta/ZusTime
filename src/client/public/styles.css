@@ -70,3 +70,13 @@ button:hover {
 .hidden {
     display: none;
 }
+
+.navBarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    background-image: url('./images/plant.png')
+}
