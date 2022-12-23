@@ -41,6 +41,8 @@ function injectScript(file, node) {
 <script type='text/javascript' src="/fiberTreeAnalyzer.js">
 */
 
-setTimeout(() => {
-  injectScript('./js/injected-script.js', 'body');
-}, 1000);
+// setTimeout(() => {
+//   injectScript('./js/injected-script.js', 'body');
+// }, 1000);
+
+injectScript('./js/injected-script.js', 'body');

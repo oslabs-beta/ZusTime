@@ -12,11 +12,12 @@ function change(color) {
   document.querySelector('body').style.backgroundColor = color;
 }
 
+
 //listens for messages from content script and can then send messages to app.jsx
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (backgroundPort) {
     // backgroundPort.postMessage({ body: request.body });
-    console.log(request.body);
+    console.log('I am request body', request.body)
   }
 });
 
