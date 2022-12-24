@@ -15,10 +15,7 @@ interface storeType {
 const useStore = create<storeType>()((set:any) => ({
   previousStates: [],
   index: 0,
-  treeComponents: {
-    appName: '',
-    children: []
-  },
+  treeComponents: {},
 
   updateIndex: (newIndex: number) =>
     set((state:any) => ({
@@ -32,10 +29,7 @@ const useStore = create<storeType>()((set:any) => ({
 
   updateTreeComponents: (treeObject) => 
   set((state: any) => ({
-    treeComponents: {
-      appName: treeObject.app,
-      children: treeObject.children
-    }
+    treeComponents: treeObject
   }))
 }));
 
