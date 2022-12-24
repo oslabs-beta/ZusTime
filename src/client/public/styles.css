@@ -4,6 +4,7 @@
     margin: 0rem;
     padding: 0rem;
     box-sizing: border-box;
+    overflow: scroll;
 }
 
 body {
@@ -68,7 +69,7 @@ button {
     background-color: #f2e8cf;
     line-height: 1.5rem;
     color: #2b2d42;
-    flex: 1;
+    flex: 2;
     height: 100vh;
     border-left: 1px solid #f4a261;
     padding-left: 1rem;
@@ -86,6 +87,7 @@ button:hover {
     height: 100vh;
     border-right: 1px solid #f4a261;
 }
+
 
 .hidden {
     display: none;
@@ -115,3 +117,19 @@ h2 {
     align-items: center;
     letter-spacing: .2rem;
 }
+
+.node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+  }
+  
+  .node text {
+    font: 12px sans-serif;
+  }
+  
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+  }

@@ -6,7 +6,10 @@ function NavBar() {
 
     const timeTravelClick = (e) => {
         const tree = document.querySelector('#tree')
-        tree.classList.toggle('hidden')
+        if (!tree.classList.contains('hidden')){
+            tree.classList.toggle('hidden')
+        }
+        
         const debug = document.querySelector('#debugger');
         if (debug.classList.contains('hidden')){
             debug.classList.toggle('hidden')
