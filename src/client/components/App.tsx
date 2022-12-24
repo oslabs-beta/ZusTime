@@ -1,15 +1,14 @@
 import * as _ from 'lodash';
 import * as React from "react";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useStore from '../store/store';
 import Debugger from './Debugger/Debugger';
+import '../public/styles.css'
+import renderTree from './d3'
 import Tree from './Tree/Tree';
-import NavBar from './NavBar/NavBar'
 
 
 function App() {
-
-
   const addPreviousState = useStore((state) => state.addPreviousState);
   const updateTreeComponents = useStore((state) => state.updateTreeComponents);
   const previousStates = useStore((state) => state.previousStates);
@@ -33,8 +32,10 @@ function App() {
       mainPort.onMessage.addListener((message, sender, sendResponse) => {
 
         //if tree is sent from the injected script
-        if (message.body.tree) {
-          updateTreeComponents(message.body.tree);
+        if (message.body === "hierarchy") {
+          console.log('message.hierarchy', message.hierarchy);
+          console.log('message hierarchy parsed', JSON.parse(message.hierarchy))
+          updateTreeComponents(JSON.parse(message.hierarchy));
         }
 
         //if state snapshot is sent from injected script it is then grabbed and added to our store inside the previous states array
@@ -72,13 +73,38 @@ function App() {
     injectContentScript();
   }, [])
 
+const [showTree, setShowTree] = useState(false);
+
+const [showTravel, setShowTravel] = useState(true);
+
+
+
+  const timeTravelClick = (e):any => {
+    e.preventDefault()
+    if (!showTravel) {
+    setShowTravel(true)
+    setShowTree(false);
+  }
+}
+
+const componentTreeClick = (e) => {
+    e.preventDefault()
+    if (!showTree) {
+      setShowTree(true);
+      setShowTravel(false);
+    }
+} 
+
 
   return (
-    <main>
-      <div><NavBar /></div>
-      <div id="debugger"><Debugger injectScript={injectScript} /></div>
-      <div id="tree" className="hidden" ><Tree /></div>
-    </main>
+    <div>
+        <nav className="navBarContainer">         
+            <button onClick={timeTravelClick}>Time Travel</button>
+            <button onClick={componentTreeClick}>Component Tree</button>
+        </nav>
+        {showTravel && (<div id="debugger"><Debugger injectScript={injectScript} /></div>)}
+        <div id="tree"><Tree/></div>
+    </div>
   )
 
 }

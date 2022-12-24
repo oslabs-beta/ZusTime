@@ -4,7 +4,10 @@ let backgroundPort;
 //listens for messages from content script and can then send messages to app.jsx
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (backgroundPort) {
-    backgroundPort.postMessage({ body: request.body, snapshot: request.snapshot });
+    if (request.body === 'stateSnapshot')
+      backgroundPort.postMessage({ body: request.body, snapshot: request.snapshot });
+    if(request.body === 'hierarchy') 
+      backgroundPort.postMessage({ body: request.body, hierarchy: request.hierarchy});
   }
 });
 
