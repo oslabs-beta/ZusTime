@@ -10,7 +10,9 @@ const Debugger = ({injectScript}) => {
     // grabbing parts of the store
     const index = useStore((state) => state.index);
     const previousStates = useStore((state) => state.previousStates);
-    
+
+    const treeData = useStore((state) => state.treeComponents);
+    console.log('treeData in Debugger', treeData);
 
     // declare array to hold states to render
     const states = [];
