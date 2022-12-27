@@ -1,9 +1,9 @@
 <div align="center">
-    #ZusTime
-    ##Zustand's **first** dedicated time travel debugging tool!
+    <h1>ZusTime</h1>
+    <h2>Zustand's <strong>first</strong> dedicated time travel debugging tool!</h2>
 </div>
 
-##Overview
+## Overview
 Hi there and welcome to ZusTime, a Chrome developer tool that can be used with any Zustand application! ZusTime was designed and built with love by four engineers passionate about solving difficult problems and streamlining the debugging process for Zustand developers.
 
 With ZusTime you can inspect your Zustand store and application by stepping both forward and backwards in your code, allowing you to visualize snapshots of state at various points in time. This type of debugging tool limits the need for countless console logs and prevents you from having to run your application over and over again, helping you find those pesky, difficult to reproduce bugs quickly before your application gets to production.
