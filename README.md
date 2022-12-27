@@ -1,4 +1,4 @@
-( ADD ZUSTIME LOGO HERE )
+![ZusTime Logo](/zustime_logo.png)
 
 #ZusTime
 ##Zustand's first dedicated time travel debugging tool
