@@ -42,13 +42,13 @@ We created ZusTime with the intention of further expanding upon and improveing t
 That's where the help of our amazing community comes in! If you have an idea that might make ZusTime better we always encourage contributions. Simply follow the steps below to submit the changes you would make.
 
 - Fork ZusTime
-- Clone the repository to your local machine with the command (`git clone <code link from ZusTime fork>`)
-- Create your own Feature Branch with the command (`git checkout -b <yourFeatureName>`)
-- Add your changes with the command (`git add .`)
-- Stage and commit your changes with the command (`git commit -m "<your comment>"`)
-- Merge your branch with the dev branch locally with the command (`git merge dev`)
+- Clone the repository to your local machine with the command `git clone <code link from ZusTime fork>`
+- Create your own Feature Branch with the command `git checkout -b <yourFeatureName>`
+- Add your changes with the command `git add .`
+- Stage and commit your changes with the command `git commit -m "<your comment>"`
+- Merge your branch with the dev branch locally with the command `git merge dev`
 - Resolve any merge conflicts
-- Push up your branch with the command (`git push origin <your feature branch name>`)
+- Push up your branch with the command `git push origin <your feature branch name>`
 - Open a pull request
 - A member of our team will then review any pull requests and merge them to the main branch if appropriate
 
