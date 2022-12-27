@@ -1,26 +1,14 @@
-<!-- ![ZusTime Logo](/zustime_logo.png) -->
-
 <div align="center">
-    <img src="zustime_logo.png" alt="Logo" width="200" height="200">
-
-<h3 align="center">ZusTime</h3>
-
-  <p align="center">
-    Zustand's **first** dedicated time travel debugging tool!
-  </p>
+    #ZusTime
+    ##Zustand's **first** dedicated time travel debugging tool!
 </div>
 
-
-
-#ZusTime
-##Zustand's **first** dedicated time travel debugging tool!
-
+##Overview
 Hi there and welcome to ZusTime, a Chrome developer tool that can be used with any Zustand application! ZusTime was designed and built with love by four engineers passionate about solving difficult problems and streamlining the debugging process for Zustand developers.
 
 With ZusTime you can inspect your Zustand store and application by stepping both forward and backwards in your code, allowing you to visualize snapshots of state at various points in time. This type of debugging tool limits the need for countless console logs and prevents you from having to run your application over and over again, helping you find those pesky, difficult to reproduce bugs quickly before your application gets to production.
 
 ZusTime also allows the ability to view your React components through the use of our visual component hierarchy tree, making it easier for you to understand and navigate complex React applications. 
-
 
 ## Getting Started
 ### Adding ZusTime as a Chrome developer tool
