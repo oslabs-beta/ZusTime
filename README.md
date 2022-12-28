@@ -1,6 +1,7 @@
 <div align="center">
+    <img src="/src/zustime_logo.png" height="200px" width="200px"/>
     <h1>ZusTime</h1>
-    <h2>Zustand's <strong>first</strong> dedicated time travel debugging tool!</h2>
+    <h2>Zustand's first dedicated time travel debugging tool!</h2>
 </div>
 
 ## Overview
@@ -41,7 +42,7 @@ We created ZusTime with the intention of further expanding upon and improveing t
 
 That's where the help of our amazing community comes in! If you have an idea that might make ZusTime better we always encourage contributions. Simply follow the steps below to submit the changes you would make.
 
-- Fork ZusTime
+- Fork this ZusTime repo
 - Clone the repository to your local machine with the command `git clone <code link from ZusTime fork>`
 - Create your own Feature Branch with the command `git checkout -b <yourFeatureName>`
 - Add your changes with the command `git add .`
