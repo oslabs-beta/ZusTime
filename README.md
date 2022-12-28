@@ -1,6 +1,6 @@
 <div align="center">
-    <img src="/src/zustime_logo.png" height="200px" width="200px"/>
     <h1>ZusTime</h1>
+    <img src="/src/zustime_logo.png" height="240px" width="240px"/>
     <h2>Zustand's first dedicated time travel debugging tool!</h2>
 </div>
 
