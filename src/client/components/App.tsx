@@ -73,27 +73,33 @@ function App() {
     injectContentScript();
   }, [])
 
+  // set two local states to either show time travel/hide component tree or show component tree/hide time travel
 const [showTree, setShowTree] = useState(false);
-
 const [showTravel, setShowTravel] = useState(true);
+// const componentTree = document.querySelectorAll('svg')
 
-
-
+// on click, hide component tree
   const timeTravelClick = (e):any => {
     e.preventDefault()
     if (!showTravel) {
     setShowTravel(true)
     setShowTree(false);
+    document.querySelector('svg').style.display = "none"
   }
 }
 
+// on click hide time travel 
 const componentTreeClick = (e) => {
     e.preventDefault()
     if (!showTree) {
       setShowTree(true);
       setShowTravel(false);
+      document.querySelector('svg').style.display = "block"
+
     }
 } 
+
+const [component, setComponent] = useState(true);
 
 
   return (
@@ -103,7 +109,7 @@ const componentTreeClick = (e) => {
             <button onClick={componentTreeClick}>Component Tree</button>
         </nav>
         {showTravel && (<div id="debugger"><Debugger injectScript={injectScript} /></div>)}
-        <div id="tree"><Tree/></div>
+        {showTree && <div id="tree" ><Tree setComponent={setComponent} component={component}/></div>}
     </div>
   )
 
