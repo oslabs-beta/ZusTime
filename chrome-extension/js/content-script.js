@@ -1,7 +1,7 @@
 // content script listening for message from the injected script/window and sends message to background
-window.addEventListener('message', (event) => {
-  chrome.runtime.sendMessage(event.data);
-});
+// window.addEventListener('message', (event) => {
+//   chrome.runtime.sendMessage(event.data);
+// });
 
 //add a listener for messages from background.. can send message to injected script
 chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
