@@ -23,6 +23,8 @@ function App() {
       mainPort = chrome.runtime.connect();
       connected = true;
       console.log('port connected!');
+    } else if (mainPort.disconnected) {
+      console.log('port disconnected');
     } else {
       console.log('port is already connected');
     }
@@ -40,9 +42,13 @@ function App() {
 
         //if state snapshot is sent from injected script it is then grabbed and added to our store inside the previous states array
         if (message.body === 'stateSnapshot') {
-          if (!previousStates.includes(message.snapshot)) {
-              addPreviousState(message.snapshot);
-          }
+          // if (!previousStates.includes(message.snapshot)) {
+          //     addPreviousState(message.snapshot);
+          // }
+          // if (previousStates[previousStates.length - 1] !== message.snapshot) {
+          //   addPreviousState(message.snapshot);
+          // }
+          addPreviousState(message.snapshot);
         }
       });
     }
@@ -66,7 +72,13 @@ function App() {
 
   // on mount of the application, run the connection and run function that will send a message to background.js to inject content script
   useEffect(() => {
-    connect()
+    connect();
+    window.addEventListener('beforeunload', () => {
+      mainPort.disconnect();
+      return () => {
+        alert('port disconnected');
+      };
+    });
   });
 
   useEffect(() => {
@@ -74,22 +86,21 @@ function App() {
   }, [])
 
   // set two local states to either show time travel/hide component tree or show component tree/hide time travel
-const [showTree, setShowTree] = useState(false);
-const [showTravel, setShowTravel] = useState(true);
-// const componentTree = document.querySelectorAll('svg')
+  const [showTree, setShowTree] = useState(false);
+  const [showTravel, setShowTravel] = useState(true);
+  // const componentTree = document.querySelectorAll('svg')
 
-// on click, hide component tree
-  const timeTravelClick = (e):any => {
+  // on click, hide component tree
+  const timeTravelClick = (e): any => {
     e.preventDefault()
     if (!showTravel) {
-    setShowTravel(true)
-    setShowTree(false);
-    document.querySelector('svg').style.display = "none"
+      setShowTravel(true)
+      setShowTree(false);
+      document.querySelector('svg').style.display = "none"
+    }
   }
-}
-
-// on click hide time travel 
-const componentTreeClick = (e) => {
+  // on click hide time travel 
+  const componentTreeClick = (e) => {
     e.preventDefault()
     if (!showTree) {
       setShowTree(true);
@@ -97,23 +108,23 @@ const componentTreeClick = (e) => {
       document.querySelector('svg').style.display = "block"
 
     }
-} 
+  }
 
-const [component, setComponent] = useState(true);
+  const [component, setComponent] = useState(true);
 
 
   return (
     <div>
-        <nav className="navBarContainer">         
-            <button onClick={timeTravelClick}>Time Travel</button>
-            <button onClick={componentTreeClick}>Component Tree</button>
-        </nav>
-        {showTravel && (<div id="debugger"><Debugger injectScript={injectScript} /></div>)}
-        {showTree && <div id="tree" ><Tree setComponent={setComponent} component={component}/></div>}
+      <nav className="navBarContainer">
+        <button onClick={timeTravelClick}>Time Travel</button>
+        <button onClick={componentTreeClick}>Component Tree</button>
+      </nav>
+      {showTravel && (<div id="debugger"><Debugger injectScript={injectScript} /></div>)}
+      {showTree && <div id="tree" ><Tree setComponent={setComponent} component={component} /></div>}
     </div>
   )
-
 }
+
 
 
 export default App;
