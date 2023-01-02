@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="/src/zustime_logo.png" height="240px" width="240px"/>
+    <img src="/src/zustime_banner.png" height="240px" width="440px"/>
     <h1>Welcome to ZusTime</h1>
     <h2>Zustand's first dedicated time travel debugging tool!</h2>
 </div>
