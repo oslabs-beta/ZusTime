@@ -2,19 +2,16 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import './styles.css';
 
-import Sibling1 from './Sibling1.jsx';
-import Sibling2 from './Sibling2.jsx';
+import Counter from './Counter.jsx';
+import Todo from './Todo.jsx';
 
 const App = () => {
 
   return (
-    <div className="newColor">
-      <div>bored?</div>
-      <button id="clickMeButton">
-        click me
-      </button>
-      <Sibling1 ></Sibling1>
-      <Sibling2 ></Sibling2>
+    <div>
+      <h1 className="name">ZusTime Demo</h1>
+        <Counter />
+        <Todo />
     </div>
   );
 };
