@@ -26,6 +26,7 @@ Please follow the steps below to get started:
 2. Above `export default <your store name>;` add this line of code `(window as any).store = <your store name>;`. This gives ZusTime the ability to capture snapshots of state when changes to your store are made.
 3. Adding this line of code allows ZusTime to access your Zustand store via the global window object. This is safe in development mode when you are working on debugging, but would be cosidered a security risk once you launch your application to production. For this reason we highly recommend adding that necessary line of code in `deveopment mode ONLY` and removing it before production.
 4. The time travel debugging feature will work with any Zustand Application, however the component hierarchy tree utilizes React Fiber and will only render a tree when **React version 16 or higher** is being used. If you would like to take advantage of the component tree visualizer, please upgrade React to at least `version 16 or higher`.
+5. In addition, the component tree will not render your React components if they are nested within a `<div>` or `<span>` so please add components to your app by simply using `<ComponentName />`.
 
 And that's it! You can now run your application in development mode and utilize ZusTime's time travel debugging and component hierarchy tree visulization features!
 
