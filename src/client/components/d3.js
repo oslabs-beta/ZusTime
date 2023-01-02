@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
-import useStore from '../store/store';
-import * as React from 'react';
+
+// any invocation of this function will append the dom
 
 function renderTree(treeData) {
   // let treeData = {
