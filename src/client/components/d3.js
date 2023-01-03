@@ -128,7 +128,7 @@ function renderTree(treeData) {
       .attr('class', 'node')
       .attr('r', 1e-6)
       .style('fill', function (d) {
-        return d._children ? 'lightsteelblue' : '#fff';
+        return d._children ? '#f4a261' : '#fff';
       });
 
     //add labels forthe nodes
@@ -143,7 +143,10 @@ function renderTree(treeData) {
       })
       .text(function (d) {
         return d.data.name;
-      });
+      })
+      .classed('nodeText', true)
+      .style('fill', 'white')
+      .style('margin', '10px');
 
     //UPDATE
     //any updates to nodeEnter and node will be applied in nodeUpdate
@@ -162,7 +165,7 @@ function renderTree(treeData) {
       .select('circle.node')
       .attr('r', 10)
       .style('fill', function (d) {
-        return d._children ? 'lightsteelblue' : '#fff';
+        return d._children ? '#f4a261' : '#fff';
       })
       .attr('cursor', 'pointer');
 
