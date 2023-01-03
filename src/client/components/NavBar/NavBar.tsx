@@ -4,7 +4,7 @@ import '../../public/styles.css'
 
 function NavBar() {
 
-    const timeTravelClick = (e) => {
+    const timeTravelClick = (e: React.MouseEvent) => {
         const tree = document.querySelector('#tree')
         if (!tree.classList.contains('hidden')){
             tree.classList.toggle('hidden')
@@ -17,7 +17,7 @@ function NavBar() {
 
     }
 
-    const componentTreeClick = (e) => {
+    const componentTreeClick = (e: React.MouseEvent) => {
         const debug = document.querySelector('#debugger');
         if (!debug.classList.contains('hidden')) {
             debug.classList.toggle('hidden')

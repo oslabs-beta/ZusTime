@@ -14,6 +14,12 @@ export interface storeType {
       }) => void,
   }
 
+  export interface snapshotProp {
+    index: number,
+    injectScript: (arg0: string) => void,
+    num: number
+  }
+
   // export interface portType {
   //   name: string,
   //   disconnect: () => void,

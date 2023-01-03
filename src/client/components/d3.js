@@ -62,7 +62,6 @@ function renderTree(treeData) {
       d //data.children
     ) {
       //shows all children on level 1 then level 2 and so on... excluding node
-      // console.log(d.children);
       return d.children;
     }
   );
