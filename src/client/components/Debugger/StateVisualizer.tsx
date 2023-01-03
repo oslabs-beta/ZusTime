@@ -13,13 +13,16 @@ const StateVisualizer = () => {
         const parsedState = JSON.parse(currentState);
         //iterate over the keys of the current state object and push them to the stateObject array
         Object.keys(parsedState).forEach(el => {
-            stateObject.push(<li>{`${JSON.stringify(el)}: ${JSON.stringify(parsedState[el])}`}</li>)
+            stateObject.push(<div className="indiv-content">{`${JSON.stringify(el)}: ${JSON.stringify(parsedState[el])}`}</div>)
         })
     }
     
     return (
         <div>
-            <ul className="stateVisualizer">Current State: {stateObject}</ul>
+            <div className="stateVisualizer">
+                <h2>Current State:</h2>
+                <div className="content">{stateObject}</div>
+               </div>
         </div>
     )
 }
