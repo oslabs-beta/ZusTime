@@ -2,7 +2,7 @@ import React from "react";
 import useStore from "../../store/store";
 import '../../public/styles.css';
 
-const Snapshot = ({index, injectScript}: {index: number, injectScript:any}) => {
+const Snapshot = ({index, injectScript, num}: {index: number, injectScript:any, num:any}) => {
 
     const updateIndex = useStore((state) => state.updateIndex);
     const previousStates = useStore((state) => state.previousStates);
@@ -18,8 +18,9 @@ const Snapshot = ({index, injectScript}: {index: number, injectScript:any}) => {
     
     return (
         <div className="jumpshots">
+            <div>{num}</div>
             <div className="state">{previousStates[index]}</div>
-            <div><button onClick={handleClick}>{`Jump to state`}</button></div>
+            <button onClick={handleClick}>{`Jump to state`}</button>
 
         </div>
     )

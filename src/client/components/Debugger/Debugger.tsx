@@ -16,9 +16,11 @@ const Debugger = ({injectScript}) => {
 
     // declare array to hold states to render
     const states = [];
+    let numOfStates = 1;
     // loop through previous states to produce a snapshot of every state in snapshots array
     for (let i = 0; i < previousStates.length; i += 2) {
-        states.push(<Snapshot index={i} injectScript={injectScript} />)
+        states.push(<Snapshot index={i} injectScript={injectScript} num={numOfStates} />)
+        numOfStates++
     }
 
     return (
@@ -26,7 +28,7 @@ const Debugger = ({injectScript}) => {
             <div className='debugContainer'>
             <div className="snapshotContainer">
                 <h2>Time Travel Debugger</h2>
-                <div>{states}</div></div>
+                <div className="indiv-state">{states}</div></div>
             <div className="stateVisualContainer"><StateVisualizer /></div>
             </div>
         </div>
