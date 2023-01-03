@@ -1,7 +1,5 @@
 import React from "react";
-import Snapshots from "./FakeData";
 import useStore from "../../store/store";
-import { ReactDOM } from "react";
 import '../../public/styles.css';
 
 const Snapshot = ({index, injectScript}: {index: number, injectScript:any}) => {

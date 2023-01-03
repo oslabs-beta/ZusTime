@@ -1,34 +1,27 @@
 import create from 'zustand';
-interface storeType {
-  counter: number,
-  incrementCounter: () => void,
-  decrementCounter: () => void,
-  todos: string[],
-  newTodo: string,
-  setNewTodo: (string) => void,
-  addTodo: (string) => void
-}
+import { storeType } from './types';
 
-const useStore = create<storeType>()((set:any) => ({
+
+const useStore = create<storeType>()((set) => ({
   counter: 0,
   incrementCounter: () =>
-    set((state: any) => ({
+    set((state) => ({
       counter: state.counter + 1
     })),
   decrementCounter: () =>
-    set((state:any) => ({
+    set((state) => ({
       counter: state.counter - 1
     })),
   todos: [],
   newTodo: "",
-  setNewTodo: (newTodo: string) => 
-    set((state:any) => ({
+  setNewTodo: (newTodo) => 
+    set((state) => ({
       newTodo
     })),
   addTodo: () =>
-    set((state: any) => ({
+    set((state) => ({
       todos: [...state.todos, state.newTodo],
-      newTodo: ""
+      newTodo: ''
     })),
 }));
 

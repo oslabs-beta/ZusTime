@@ -1,26 +1,23 @@
 import * as _ from 'lodash';
 import * as React from "react";
 import '../../public/styles.css'
-import { useEffect, useState} from 'react';
+import { useEffect } from 'react';
 import renderTree from '../d3';
 import useStore from '../../store/store';
 
-const Tree = ({setComponent, component}) => {
+const Tree = ({ setComponent, component }) => {
   const treeData = useStore((state) => state.treeComponents);
-  console.log('treeData in Tree', treeData);
+  let result = null;
 
-let result = null;
+  // only happens after the initial mount
+  useEffect(() => {
+    setComponent(false);
+  }, [])
 
-// only happens after the initial mount
-useEffect(() => {
-  setComponent(false);
-}, [])
-
-// listens for if there is tree data and if component state is at 0 aka first mount 
-if (treeData.name && component) {
-  console.log(component)
-  result = renderTree(treeData)
-}
+  // listens for if there is tree data and if component state is at 0 aka first mount 
+  if (treeData.name && component) {
+    result = renderTree(treeData)
+  }
 
 
   return (

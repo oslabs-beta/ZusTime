@@ -4,14 +4,12 @@ import { useEffect, useState } from 'react';
 import useStore from '../store/store';
 import Debugger from './Debugger/Debugger';
 import '../public/styles.css'
-import renderTree from './d3'
 import Tree from './Tree/Tree';
 
 
 function App() {
   const addPreviousState = useStore((state) => state.addPreviousState);
   const updateTreeComponents = useStore((state) => state.updateTreeComponents);
-  const previousStates = useStore((state) => state.previousStates);
 
   //declaring our main port 
   let mainPort: any;
@@ -42,12 +40,6 @@ function App() {
 
         //if state snapshot is sent from injected script it is then grabbed and added to our store inside the previous states array
         if (message.body === 'stateSnapshot') {
-          // if (!previousStates.includes(message.snapshot)) {
-          //     addPreviousState(message.snapshot);
-          // }
-          // if (previousStates[previousStates.length - 1] !== message.snapshot) {
-          //   addPreviousState(message.snapshot);
-          // }
           addPreviousState(message.snapshot);
         }
       });
