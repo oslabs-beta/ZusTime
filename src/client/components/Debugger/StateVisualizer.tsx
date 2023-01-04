@@ -16,12 +16,28 @@ const StateVisualizer = () => {
             stateObject.push(<div className="indiv-content">{`${JSON.stringify(el)}: ${JSON.stringify(parsedState[el])}`}</div>)
         })
     }
+
+    const currentStateObj = []
+    if (previousStates.length) {
+        const currentState = previousStates[previousStates.length - 1]
+        const parsedState = JSON.parse(currentState);
+        //iterate over the keys of the current state object and push them to the stateObject array
+        Object.keys(parsedState).forEach(el => {
+            currentStateObj.push(<div className="indiv-content">{`${JSON.stringify(el)}: ${JSON.stringify(parsedState[el])}`}</div>)
+        })
+    }
+
     
     return (
         <div>
             <div className="stateVisualizer">
-                <h2>Current State:</h2>
+                <div className="state-container">
+                <h2>Most Recent State:</h2>
+                <div className="content">{currentStateObj}</div></div>
+                <div className="state-container">                
+                <h2>Jumped State:</h2>
                 <div className="content">{stateObject}</div>
+                </div>
                </div>
         </div>
     )

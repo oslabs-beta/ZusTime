@@ -5,7 +5,7 @@ import Snapshots from '../components/Debugger/FakeData'
 
 interface storeType {
   previousStates: any[],
-  index: number,
+  index: any,
   treeComponents: any,
   updateIndex: (index: number) => void,
   addPreviousState: (currColor: any) => void,
