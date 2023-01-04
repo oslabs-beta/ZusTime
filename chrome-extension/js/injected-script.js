@@ -115,7 +115,6 @@ window.addEventListener('click', (event) => {
   };
 
   const finalHierarchy = createHierarchy(document.body.childNodes);
-  console.log('finalHierarchy', finalHierarchy);
 
   //sends message containing tree component data to the content script
   window.postMessage({

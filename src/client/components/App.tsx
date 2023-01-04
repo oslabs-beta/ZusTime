@@ -4,29 +4,22 @@ import { useEffect, useState } from 'react';
 import useStore from '../store/store';
 import Debugger from './Debugger/Debugger';
 import '../public/styles.css'
-import renderTree from './d3'
 import Tree from './Tree/Tree';
 
 
 function App() {
   const addPreviousState = useStore((state) => state.addPreviousState);
   const updateTreeComponents = useStore((state) => state.updateTreeComponents);
-  const previousStates = useStore((state) => state.previousStates);
 
   //declaring our main port 
   let mainPort: any;
-  let connected = false;
+  let connected: boolean = false;
 
-  const connect = () => {
+  const connect = (): void => {
     //connects devtool to inspected page
     if (!connected) {
       mainPort = chrome.runtime.connect();
       connected = true;
-      console.log('port connected!');
-    } else if (mainPort.disconnected) {
-      console.log('port disconnected');
-    } else {
-      console.log('port is already connected');
     }
 
     if (connected) {
@@ -35,19 +28,11 @@ function App() {
 
         //if tree is sent from the injected script
         if (message.body === "hierarchy") {
-          console.log('message.hierarchy', message.hierarchy);
-          console.log('message hierarchy parsed', JSON.parse(message.hierarchy))
           updateTreeComponents(JSON.parse(message.hierarchy));
         }
 
         //if state snapshot is sent from injected script it is then grabbed and added to our store inside the previous states array
         if (message.body === 'stateSnapshot') {
-          // if (!previousStates.includes(message.snapshot)) {
-          //     addPreviousState(message.snapshot);
-          // }
-          // if (previousStates[previousStates.length - 1] !== message.snapshot) {
-          //   addPreviousState(message.snapshot);
-          // }
           addPreviousState(message.snapshot);
         }
       });
@@ -55,14 +40,14 @@ function App() {
   }
 
   //this function runs when the dev tool is opened and injects the content script into the current users tab
-  const injectContentScript = () => {
+  const injectContentScript = (): void => {
     mainPort.postMessage({
       body: 'runContentScript'
     })
   }
 
   //this function takes the previous state from the store and injects it into the current users tab. It is run whenver a jump to previous state button is clicked
-  const injectScript = (previousState) => {
+  const injectScript = (previousState: string): void => {
     //these messages are being sent to background.js
     mainPort.postMessage({
       body: 'TIMETRAVEL',
@@ -71,17 +56,15 @@ function App() {
   }
 
   // on mount of the application, run the connection and run function that will send a message to background.js to inject content script
-  useEffect(() => {
+  useEffect((): void => {
     connect();
+    //disconnects port when user leaves the dev
     window.addEventListener('beforeunload', () => {
       mainPort.disconnect();
-      return () => {
-        alert('port disconnected');
-      };
     });
   });
 
-  useEffect(() => {
+  useEffect((): void => {
     injectContentScript();
   }, [])
 
@@ -91,7 +74,7 @@ function App() {
   // const componentTree = document.querySelectorAll('svg')
 
   // on click, hide component tree
-  const timeTravelClick = (e): any => {
+  const timeTravelClick = (e: React.MouseEvent): void => {
     e.preventDefault()
     if (!showTravel) {
       setShowTravel(true)
@@ -100,7 +83,7 @@ function App() {
     }
   }
   // on click hide time travel 
-  const componentTreeClick = (e) => {
+  const componentTreeClick = (e: React.MouseEvent): void => {
     e.preventDefault()
     if (!showTree) {
       setShowTree(true);

@@ -1,11 +1,9 @@
 import React from "react";
-import Snapshots from "./FakeData";
 import useStore from "../../store/store";
-import { ReactDOM } from "react";
 import '../../public/styles.css';
+import { snapshotProp } from "../../../types";
 
-const Snapshot = ({index, injectScript, num}: {index: number, injectScript:any, num:any}) => {
-
+const Snapshot = ({index, injectScript, num}: snapshotProp) => {
     const updateIndex = useStore((state) => state.updateIndex);
     const previousStates = useStore((state) => state.previousStates);
 
@@ -13,9 +11,9 @@ const Snapshot = ({index, injectScript, num}: {index: number, injectScript:any, 
     // handles click for when a snapshot is chosen
     // inject script with the snapshot
     // update index to indicate which snapshot we're on
-    const handleClick = (e:any) => {
-        injectScript(previousStates[index])
-        updateIndex(index)
+    const handleClick = (e: React.MouseEvent) => {
+        injectScript(previousStates[index]);
+        updateIndex(index);
     }
     
     return (

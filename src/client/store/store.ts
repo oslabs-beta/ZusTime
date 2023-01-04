@@ -1,42 +1,30 @@
-import create, {State} from 'zustand';
-import Snapshots from '../components/Debugger/FakeData'
+import create from 'zustand';
+import { storeType } from '../../types';
 
-
-
-interface storeType {
-  previousStates: any[],
-  index: any,
-  treeComponents: any,
-  updateIndex: (index: number) => void,
-  addPreviousState: (currColor: any) => void,
-  updateTreeComponents: (treeComponents: any) => void,
-}
-
-const useStore = create<storeType>()((set:any) => ({
+const useStore = create<storeType>()((set) => ({
   previousStates: [],
   index: 0,
-  treeComponents: {},
+  treeComponents: {
+    name: '',
+    children: null
+  },
 
-  updateIndex: (newIndex: number) =>
-    set((state:any) => ({
+  updateIndex: (newIndex) =>
+    set(() => ({
       index: newIndex,
     })),
 
   addPreviousState: (snapshot) =>
-    set((state: any) => ({
+    set((state) => ({
       previousStates: [...state.previousStates, snapshot],
     })),
 
   updateTreeComponents: (treeObject) => 
-  set((state: any) => ({
+  set(() => ({
     treeComponents: treeObject
   }))
 }));
 
 export default useStore;
 
-// set up the store
-// inside the store we need an array to hold previous state values
-// inside of the previous state values we need to initialize state to 255
-// when clicking on previous or next buttons, we need to produce states in the array
-// also need an index value to keep track of current state we're on
+
