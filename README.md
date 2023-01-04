@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="src/zustime-banner.gif" alt="zustand banner gif" />
+    <img src="src/zustime-banner.gif" alt="zustand banner gif" width="100%"/>
     <h1>Welcome to ZusTime</h1>
     <h2>Zustand's first dedicated time travel debugging tool!</h2>
 </div>
