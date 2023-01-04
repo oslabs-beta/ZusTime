@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="/src/zustime_banner.png" height="240px" width="100%"/>
+    <img src="src/zustime-banner.gif" alt="zustand banner gif" />
     <h1>Welcome to ZusTime</h1>
     <h2>Zustand's first dedicated time travel debugging tool!</h2>
 </div>
@@ -38,13 +38,13 @@ And that's it! You can now run your application in development mode and utilize 
 Once you have your application running in a Chrome browser, open the developer tools by right clicking on the screen and choosing `inspect`, or you can simply press `F12` on your keyboard. Among the panels you should find one with the title **"ZusTime"** and a really cute icon.
 
 <p align="center">
-  <img src="/src/open_devtool.gif" alt="load unpacking gif" />
+  <img src="/src/open_devtool.gif" alt="opening the devtools gif" />
 </p>
 
 When a change to state is made within your Zustand application, a snapshot of your store is captured and a **Jump to State** button will appear within the ZusTime panel. Whenever your want to "time travel" simply click one of the Jump to State buttons and your application will be reverted to a previous instance of state. In addition, you will be able to view the current state of your Zustand store on the right hand side of the buttons. Pretty neat, huh?
 
 <p align="center">
-  <img src="src/timetravel.gif" alt="load unpacking gif" />
+  <img src="src/timetravel.gif" alt="time travel debugger gif" />
 </p>
 
 ## React Component Hierarchy Tree Visualizer
