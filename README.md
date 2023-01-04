@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="/src/zustime_banner.png" height="280px" width="100%"/>
+    <img src="/src/zustime_banner.png" height="240px" width="100%"/>
     <h1>Welcome to ZusTime</h1>
     <h2>Zustand's first dedicated time travel debugging tool!</h2>
 </div>
@@ -20,9 +20,8 @@ Please follow the steps below to get started:
 3. Open Google Chrome, navigate to `chrome://extensions/`, and make sure the **"Developer mode"** toggle in the top-right corner is siwtched to **on**.
 4. Click the **"Load unpacked"** button in the top-left and select the directory `chrome-extension` on your local machine.
 5. Congrats! ZusTime will now show up in your Chrome developer tools!
-<div align="center">
-    <img src="/src/loading_unpacked_files.mov"/>
-</div>
+
+![](https://github.com/ZusTime/src/load_unpack.gif)
 
 ### Making ZusTime compatible with your application
 1. Within your Zustand application, navigate to the file that contains your **store**.
@@ -36,9 +35,7 @@ And that's it! You can now run your application in development mode and utilize 
 ## Time Travel Debugging with A State Tracker and Visualizer
 Once you have your application running in a Chrome browser, open the developer tools by right clicking on the screen and choosing `inspect`, or you can simply press `F12` on your keyboard. Among the panels you should find one with the title **"ZusTime"** and a really cute icon.
 
-<div align="center">
-    <img src="/src/opening_devtool.mov"/>
-</div>
+![](https://github.com/ZusTime/src/open_devtool.gif)
 
 When a change to state is made within your Zustand application, a snapshot of your store is captured and a **Jump to State** button will appear within the ZusTime panel. Whenever your want to "time travel" simply click one of the Jump to State buttons and your application will be reverted to a previous instance of state. In addition, you will be able to view the current state of your Zustand store on the right hand side of the buttons. Pretty neat, huh?
 
