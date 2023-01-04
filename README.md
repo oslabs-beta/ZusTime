@@ -21,7 +21,6 @@ Please follow the steps below to get started:
 4. Click the **"Load unpacked"** button in the top-left and select the directory `chrome-extension` on your local machine.
 5. Congrats! ZusTime will now show up in your Chrome developer tools!
 
-<!-- ![](src/load_unpack.gif) -->
 <p align="center">
   <img src="src/load_unpack.gif" alt="load unpacking gif" />
 </p>
@@ -37,16 +36,23 @@ And that's it! You can now run your application in development mode and utilize 
 
 ## Time Travel Debugging with A State Tracker and Visualizer
 Once you have your application running in a Chrome browser, open the developer tools by right clicking on the screen and choosing `inspect`, or you can simply press `F12` on your keyboard. Among the panels you should find one with the title **"ZusTime"** and a really cute icon.
-<!-- 
-![](/src/open_devtool.gif) -->
+
 <p align="center">
   <img src="/src/open_devtool.gif" alt="load unpacking gif" />
 </p>
 
 When a change to state is made within your Zustand application, a snapshot of your store is captured and a **Jump to State** button will appear within the ZusTime panel. Whenever your want to "time travel" simply click one of the Jump to State buttons and your application will be reverted to a previous instance of state. In addition, you will be able to view the current state of your Zustand store on the right hand side of the buttons. Pretty neat, huh?
 
+<p align="center">
+  <img src="src/timetravel.gif" alt="load unpacking gif" />
+</p>
+
 ## React Component Hierarchy Tree Visualizer
-To view your component tree, simply click the **Component Tree** tab at the top of the tool and you will immediately see your React components rendered in an interactive tree visualizer thanks to the help of D3.js. Here you are able to toggle the view of parent and children components by simply clicking on each node. 
+To view your component tree, simply click the **Component Tree** tab at the top of the tool and you will immediately see your React components rendered in an interactive tree visualizer thanks to the help of D3.js. Here you are able to toggle the view of parent and children components by simply clicking on each node.
+
+<p align="center">
+  <img src="src/tree.gif" alt="load unpacking gif" />
+</p>
 
 ## Contribute
 We created ZusTime with the intention of further expanding upon and improveing this tool for years to come.
