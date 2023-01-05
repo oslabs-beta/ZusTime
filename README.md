@@ -48,7 +48,7 @@ When a change to state is made within your Zustand application, a snapshot of yo
 </p>
 
 ## React Component Hierarchy Tree Visualizer
-To view your component tree, simply click the **Component Tree** tab at the top of the tool and you will immediately see your React components rendered in an interactive tree visualizer thanks to the help of D3.js. Here you are able to toggle the view of parent and children components by simply clicking on each node.
+To view your component tree, simply click the **Component Tree** tab at the top of the tool and you will immediately see your React components rendered in an interactive tree visualizer thanks to the help of D3.js. Here you are able to toggle the view of parent and children components by simply clicking on each node. Our tree currently utilizes React Fiber to traverse your application's nodes to display parent components and its children. This feature is only compatible with React 16 and above.
 
 <p align="center">
   <img src="src/tree.gif" alt="load unpacking gif" />
