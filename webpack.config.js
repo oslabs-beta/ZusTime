@@ -2,9 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/client/index.ts',
+  entry: './src/client/index.js',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '/chrome-extension/dist'),
     publicPath: '/',
     filename: 'dist.js',
   },
@@ -39,12 +39,41 @@ module.exports = {
         use: 'ts-loader',
       },
       {
+        test: /\.js$|jsx/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+            },
+          },
+        ],
+      },
+      {
         test: /.(css|scss)$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|svg|jpe?g|gif)$/,
+        include: /images/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+              publicPath: 'images/'
+            }
+          }
+        ]
       },
     ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      react: path.resolve('./node_modules/react'),
+    },
   },
 };

@@ -2,11 +2,15 @@
     "compilerOptions": {
       "outDir": "./dist/",
       "sourceMap": true,
-      "noImplicitAny": true,
-      "module": "es6",
-      "target": "es5",
+      "noImplicitAny": false,
+      "module": "CommonJs",
+      "target": "ES6",
       "jsx": "react",
       "allowJs": true,
-      "moduleResolution": "node"
-    }
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "lib": ["DOM"]
+    },
+    "include": ["src/**/*", "chrome-extension/**/*"],
+    "exclude": ["node_modules"]
   }

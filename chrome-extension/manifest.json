@@ -1,0 +1,38 @@
+{
+    "manifest_version": 3,
+  
+    "name": "ZusTime",
+    "version": "1.0",
+  
+    "description": "Zustand's Time Travel Debugger & Component Hierarchy Visualizer",
+    "author": "ZusTime Debuggen Team",
+    "icons": {
+      "16": "assets/zustime.png",
+      "32": "assets/zustime.png",
+      "48": "assets/zustime.png",
+      "128": "assets/zustime.png"
+    },
+  
+    "devtools_page": "/html/devtools.html",
+
+    "background": {
+      "service_worker": "/js/background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [ "<all_urls>" ],
+        "js": ["/js/content-script.js"]
+      }
+    ],
+    "web_accessible_resources": [{
+      "resources": ["/js/content-script.js", "/js/injected-script.js", "/assets/zustime.png", "styles.css"],
+      "matches": ["<all_urls>"]
+    }],
+    "permissions": ["storage", "tabs", "activeTab", "scripting"],
+    "host_permissions": ["<all_urls>"], 
+    "externally_connectable": {
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  }
